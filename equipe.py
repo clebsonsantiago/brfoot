@@ -12,6 +12,16 @@ class Equipe:
     self.__defesa = []
     self.__goleiros = []
 
+  def exibe_jogador(self, n_da_camisa):
+    equipe = self.__time
+    jogador = {}
+
+    for key, value in enumerate(equipe):
+      if value["n_da_camisa"] == n_da_camisa:
+        jogador.update(value)
+
+    return jogador
+
   def adiciona_jogador(self, nome, n_da_camisa, tipo):
     """
     Nome: 'Nome do Jogador'
@@ -52,6 +62,10 @@ class Equipe:
   @property
   def time(self):
     return self.__time
+
+  @property
+  def nome(self):
+    return self.__nome
 
   @property
   def time_formacao(self):

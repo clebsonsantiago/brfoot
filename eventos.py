@@ -1,26 +1,29 @@
 #import random as random
-from partida import Partida
 class Eventos:
   def __init__(self):
-    partida = Partida()
+    self.__eventos = []
 
-  def eventos_negativos(self):
-    pass
-
-  def __falta(self, comportamento):
+  def falta(self, comportamento):
     pass
   
-  def __cartao_amarelo(self, comportamento):
+  def cartao_amarelo(self, comportamento):
     pass
   
-  def __cartao_vermelho(self, comportamento):
+  def cartao_vermelho(self, comportamento):
     pass
 
-  def __contundido(self, comportamento):
+  def contundido(self, comportamento):
     pass
 
-  def gol(self, n_camisa_do_jogador, time):
-    frase = "Goool do {}".format()
-    partida.
-
-
+  def gol(self, minuto, n_camisa_do_jogador, time):
+    jogador = time.exibe_jogador(n_camisa_do_jogador)["nome"]
+    frase = "Goool do {} para o {}".format(jogador, time.nome)
+    self.__eventos.append({
+      "minuto": minuto,
+      "evento": "gol",
+      "frase": frase
+    })
+  
+  @property
+  def eventos(self):
+    return self.__eventos

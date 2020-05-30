@@ -2,8 +2,11 @@ from interface_console import Interface
 from partida import Partida
 from equipe import Equipe
 from estatisticas import Estatisticas
+from eventos import Eventos
 import time
 import random
+
+eventos = Eventos()
 
 tela_console = Interface()
 partida = Partida()
@@ -62,10 +65,12 @@ for x in range(1, 46):
 
   if(gol_time1() == True):
     print(x, ": {} fez 1 goool para o Flamengo".format(jogador_flamengo["nome"]), sep="")
+    eventos.gol(x, jogador_flamengo["n_da_camisa"],time_flamengo)
     gols_do_flamengo += 1
   
   if(gol_time2() == True):
     print(x, ": {} fez 1 goool para o Vasco da Gama".format(jogador_vasco["nome"]), sep="")
+    eventos.gol(x, jogador_vasco["n_da_camisa"],time_vasco_da_gama)
     gols_do_vasco_da_gama += 1
   else:
     print(x, ": ", sep="")
@@ -96,3 +101,5 @@ tela_console.imprime_estastisticas_de_time(time_vasco_da_gama.time)
 ataque_do_vasco_da_gama = estatisticas.resultado_media(time_vasco_da_gama.time, "ataque")
 defesa_do_vasco_da_gama = estatisticas.resultado_media(time_vasco_da_gama.time, "defesa")
 comportamento_do_vasco_da_gama = estatisticas.resultado_media(time_vasco_da_gama.time, "comportamento")
+
+print(eventos.eventos)
